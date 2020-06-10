@@ -4,6 +4,9 @@ RUN echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /e
 echo "deb-src http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
 RUN sed -i 's#http://archive.ubuntu.com/#http://tw.archive.ubuntu.com/#' /etc/apt/sources.list
 
+# For installing from network APT Cache
+# RUN echo 'Acquire::http { Proxy "http://apt-cacher-ng_ip:3142"; }' | tee -a /etc/apt/apt.conf.d/00proxy
+
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean \
     && apt-get install -y --no-install-recommends software-properties-common curl
