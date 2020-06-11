@@ -26,8 +26,8 @@ RUN apt-get install -y --no-install-recommends --allow-unauthenticated \
     && pip install -U pip
 
 # For installing other Kali metapackages check https://tools.kali.org/kali-metapackages
-# RUN apt-get update && apt-cache search kali-linux && apt-get install -y   \
-#         kali-tools-top10
+RUN apt-get update && apt-cache search kali-linux && apt-get install -y   \
+        kali-tools-top10 kali-menu
 
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
